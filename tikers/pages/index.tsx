@@ -10,6 +10,7 @@ export type HomeProps = {
 
 const Home = ({videos} : HomeProps) => {
   console.log(videos);
+  
 
   return <div className="flex flex-col gap-10 videos h-full">
     {
