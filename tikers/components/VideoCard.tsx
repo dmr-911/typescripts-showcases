@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Video } from "../types";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { GoVerified } from "react-icons/go";
@@ -29,7 +29,13 @@ const VideoCard: NextPage<VideoCardProps> = ({ post }) => {
       videoRef?.current?.play();
       setPlaying(true)
     }
-  }
+  };
+
+  useEffect(()=>{
+    if(videoRef?.current){
+      videoRef.current.muted = isVideoMuted
+    }
+  },[isVideoMuted])
 
   return (
     <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
