@@ -140,7 +140,7 @@ const Upload = () => {
           />
           <label className="text-md font-medium">Choose a category</label>
           <select
-            className="outline-none border-2 border-gray-200 capitalize lg:p-4 rounded cursor-pointer"
+             className='outline-none lg:w-650 border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded cursor-pointer'
             onChange={(e) => setCategory(e.target.value)}
           >
             {topics.map((topic) => (
