@@ -7,6 +7,7 @@ import { writeFile } from "fs";
 import { topics } from "../utils/constants";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { BASE_URL } from "../utils";
 
 const Upload = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +66,7 @@ const Upload = () => {
           };
 
 
-        await axios.post(`http://localhost:3000/api/post`, document);
+        await axios.post(`${BASE_URL}/api/post`, document);
         router.push('/');
     }
   };
