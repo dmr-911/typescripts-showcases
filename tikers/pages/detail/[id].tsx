@@ -21,6 +21,8 @@ const Detail = ({ postDetails }: DetailProps) => {
   const [post, setPost] = useState(postDetails);
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
+  const [comment, setComment] = useState("");
+  const [isPostingComment, setIsPostingComment] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -48,9 +50,24 @@ const Detail = ({ postDetails }: DetailProps) => {
       const res = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: post._id,
-        like
+        like,
       });
       setPost({ ...post, likes: res.data.likes });
+    }
+  };
+
+  const addComment = async (e) => {
+    e.preventDefault();
+    if (userProfile && comment) {
+      setIsPostingComment(true);
+      const {data} = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+        userId: userProfile._id,
+        comment,
+      });
+
+      setPost({...post, comments: data.comments});
+      setComment('');
+      setIsPostingComment(false)
     }
   };
 
@@ -144,7 +161,13 @@ const Detail = ({ postDetails }: DetailProps) => {
                 />
               ) : null}
             </div>
-            <Comments />
+            <Comments
+              comment={comment}
+              setComment={setComment}
+              comments={post.comments}
+              addComment={addComment}
+              isPostingComment={isPostingComment}
+            />
           </div>
         </div>
       </div>
