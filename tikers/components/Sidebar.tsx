@@ -6,8 +6,12 @@ import Link from "next/link";
 import Discover from "./Discover";
 import SuggestedAccounts from "./SuggestedAccounts";
 import Footer from "./Footer";
+import useAuthStore from "../store/authStore";
 
 const Sidebar = () => {
+  const { fetchAllUsers, allUsers } = useAuthStore();
+
+
   const [showSidebar, setShowSidebar] = useState(true);
   const [userProfile, setUserProfile] = useState(false);
   const normalLink =
@@ -32,7 +36,7 @@ const Sidebar = () => {
               </Link>
             </div>
             <Discover/>
-            <SuggestedAccounts />
+            <SuggestedAccounts fetchAllUsers={fetchAllUsers} allUsers={allUsers}/>
             <Footer/>
           </div>
         ) : null}
