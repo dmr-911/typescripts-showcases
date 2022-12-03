@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { GoVerified } from "react-icons/go";
 
 import VideoCard from "../../components/VideoCard";
@@ -19,8 +19,19 @@ export type ProfileProps = {
 
 const Profile: NextPage<ProfileProps> = ({ data }) => {
   const { user, userVideos, userLikedVideos } = data;
+  const [showUserVideos, setShowUserVideos] = useState(true);
+  const [videosList, setVideosList]= useState<Video[]>([]);
 
-  console.log(user);
+  const videos = showUserVideos ? 'border-b-2 border-black' : 'text-gray-400'
+  const Liked = !showUserVideos ? 'border-b-2 border-black' : 'text-gray-400'
+
+  useEffect(()=>{
+    if(showUserVideos){
+        setVideosList(userVideos)
+    }else{
+        setVideosList(userLikedVideos)
+    }
+  },[showUserVideos, userLikedVideos, userVideos])
 
   return (
     <div className="w-full">
@@ -42,6 +53,20 @@ const Profile: NextPage<ProfileProps> = ({ data }) => {
             <GoVerified className='text-blue-400 md:text-xl text-md' />
           </div>
           <p className='text-sm font-medium'> {user.userName}</p>
+        </div>
+      </div>
+
+      <div>
+        <div className="flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 bg-white w-full">
+            <p className={`text-xl font-semibold ${videos} cursor-pointer`} onClick={()=> setShowUserVideos(true)}>Videos</p>
+            <p className={`text-xl font-semibold ${Liked} cursor-pointer`} onClick={()=> setShowUserVideos(false)}>Liked</p>
+        </div>
+        <div className="flex gap-6 flex-wrap md:justify-start ">
+            {
+                videosList.length >0 ?(
+                    videosList.map((post: Video, i : number)=><VideoCard key={i} post={post}/>)
+                ) :<NoResult text={`No ${showUserVideos ? '' : 'Liked'} Videos Yet`}/>
+            }
         </div>
       </div>
     </div>
