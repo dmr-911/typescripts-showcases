@@ -15,11 +15,11 @@ const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [userProfile, setUserProfile] = useState(false);
   const normalLink =
-    "flex items-center gap-3 hover:bg-primary p-3 justify-between xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded";
+    "flex items-center gap-3 hover:bg-primary p-3 justify-between xl:justify-start cursor-pointer font-semibold text-blue-500 rounded";
   return (
     <div>
       <div
-        className="block 2xl:hidden m-2 mt-3 text-xl"
+        className="block m-2 mt-3 text-xl"
         onClick={() => setShowSidebar((prev) => !prev)}
       >
         {showSidebar ? <ImCancelCircle /> : <AiOutlineMenu />}
