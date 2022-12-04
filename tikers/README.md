@@ -11,9 +11,10 @@ Open [Tikers](https://tikers.vercel.app/) and explore social media experience.
 
 ## Technology Used
 
-- React.js
 - Next.js
+ - React.js
 - Typescript
 - Tailwind CSS
+- React Icons
 - Sanity
 - zustand (Alternative of redux)
