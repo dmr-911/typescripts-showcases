@@ -1,4 +1,5 @@
-## APPs
+
+- GROQ## APPs
 1.Tikers
 Open [Tikers](https://tikers.vercel.app/) and explore social media experience.
 
@@ -20,4 +21,5 @@ Open [Tikers](https://tikers.vercel.app/) and explore social media experience.
 - Tailwind CSS
 - React Icons
 - Sanity
+- GROQ
 - zustand (Alternative of redux)
