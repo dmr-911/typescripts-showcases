@@ -1,7 +1,9 @@
-## Tikers
+## APPs
+1.Tikers
 Open [Tikers](https://tikers.vercel.app/) and explore social media experience.
 
 ## Features
+1. Tikers
 - Admin dashboard [Dashboard](https://tikers-admin-dashboard.sanity.studio/)
 - Upload videos
 - Like and comments on any video
@@ -11,7 +13,7 @@ Open [Tikers](https://tikers.vercel.app/) and explore social media experience.
 - Signup with google implemented
 
 ## Technology Used
-
+1. Tikers
 - Next.js
  - React.js
 - Typescript
